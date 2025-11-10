@@ -72,7 +72,6 @@ public class FormTests {
                 WebElement stateInputField = FormUtils.getElementFromListById(fieldsDTO.getSelectInputs(), "react-select-3-input");
                 WebElement cityInputField = FormUtils.getElementFromListById(fieldsDTO.getSelectInputs(), "react-select-4-input");
 
-                Thread.sleep(1000);
 
                 subjectInputField.click();
                 FormUtils.fillInputField(subjectInputField, Constants.SUBJECT_FIELD_VALUE, true);
