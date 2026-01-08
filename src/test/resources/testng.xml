@@ -2,10 +2,16 @@
 <suite name="FormSuite" parallel="classes">
     <parameter name="FORM_URL" value="https://demoqa.com/automation-practice-form"/>
     <parameter name="ALERT_URL" value="https://demo.automationtesting.in/Alerts.html"/>
+    <parameter name="DEFAULT_BROWSER" value="firefox"/>
+    <parameter name="ALERT_DATA_FILE_PATH" value="test-data/alert-data.csv"/>
+    <parameter name="FORM_DATA_FILE_PATH" value="test-data/form-data.csv"/>
+
     <test name="tests.FormTests">
         <classes>
-            <class name="tests.FormTests"/>
+            <!--<class name="tests.FormTests"/>
             <class name="tests.AlertTests"/>
+            <class name="tests.LoadTest"/>-->
+            <class name="tests.FormTest"/>
         </classes>
     </test>
 </suite>
