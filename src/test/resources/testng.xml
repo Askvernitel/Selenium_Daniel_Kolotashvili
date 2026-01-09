@@ -4,7 +4,7 @@
     <parameter name="ALERT_URL" value="https://demo.automationtesting.in/Alerts.html"/>
     <parameter name="DEFAULT_BROWSER" value="firefox"/>
     <parameter name="ALERT_DATA_FILE_PATH" value="test-data/alert-data.csv"/>
-    <parameter name="FORM_DATA_FILE_PATH" value="test-data/form-data.csv"/>
+    <parameter name="FORM_DATA_FILE_PATH" value="test-data/form-data.json"/>
 
     <test name="tests.FormTests">
         <classes>

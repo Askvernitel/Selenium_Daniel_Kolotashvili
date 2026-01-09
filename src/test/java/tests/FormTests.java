@@ -79,15 +79,15 @@ public class FormTests {
                 FormUtils.fillDatePickers(fieldsDTO.getDatePickers(), new Date(110, 10, 10));
 
                 wait.until(d -> d.findElements(By.tagName("div"))
-                            .stream()
-                            .anyMatch(e -> e.getText().equals(Constants.STATE_FIELD_VALUE))
+                        .stream()
+                        .anyMatch(e -> e.getText().equals(Constants.STATE_FIELD_VALUE))
                 );
 
                 FormUtils.fillInputField(cityInputField, Constants.CITY_FIELD_VALUE, true);
                 btnElem.click();
 
                 wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("table")));
-                WebElement elem =driver.findElement(By.tagName("table"));
+                WebElement elem = driver.findElement(By.tagName("table"));
 
                 List<WebElement> rows = elem.findElements(By.tagName("tr"));
                 String studentName = FormUtils.findTableMatchByLabel(rows, "Student Name");
@@ -100,12 +100,12 @@ public class FormTests {
                 String address = FormUtils.findTableMatchByLabel(rows, "Address");
                 String stateAndCity = FormUtils.findTableMatchByLabel(rows, "State and City");
 
-                Assert.assertEquals(studentName, Constants.INPUT_FIELD_VALUE + " "+ Constants.INPUT_FIELD_VALUE);
-                Assert.assertEquals(studentEmail,Constants.EMAIL_FIELD_VALUE) ;
+                Assert.assertEquals(studentName, Constants.INPUT_FIELD_VALUE + " " + Constants.INPUT_FIELD_VALUE);
+                Assert.assertEquals(studentEmail, Constants.EMAIL_FIELD_VALUE);
                 Assert.assertEquals(gender, Constants.GENDER_FIELD_VALUE);
                 Assert.assertEquals(mobile, Constants.PHONE_FIELD_VALUE);
                 Assert.assertEquals(subjects, Constants.SUBJECT_FIELD_VALUE);
-                Assert.assertEquals(hobbies.replaceAll(" ","").split("\\,").length, 3);
+                Assert.assertEquals(hobbies.replaceAll(" ", "").split("\\,").length, 3);
                 Assert.assertEquals(address, Constants.INPUT_FIELD_VALUE);
                 Assert.assertEquals(dateOfBirth, "10 November,2010");
                 Assert.assertEquals(stateAndCity, Constants.STATE_FIELD_VALUE + " " + Constants.CITY_FIELD_VALUE);

@@ -1,0 +1,12 @@
+{
+  "firstName": "Daniel",
+  "lastName": "Kolotashvili",
+  "email": "danikolotashvili@gmail.com",
+  "gender": "MALE",
+  "phoneNumber": "1234567891",
+  "subject": "English",
+  "hobby": "SPORTS",
+  "currentAddress": "Cool Address",
+  "state": "NCR",
+  "city": "Delhi"
+}

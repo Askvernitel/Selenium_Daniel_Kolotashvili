@@ -14,7 +14,7 @@ public class FieldsDTO {
     private List<WebElement> selectInputs;
     private List<WebElement> datePickers;
 
-    public FieldsDTO(){
+    public FieldsDTO() {
         this.radios = new ArrayList<>();
         this.checkboxes = new ArrayList<>();
         this.inputFields = new ArrayList<>();

@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 public class DriverUtils {
     public static void run(WebDriver driver, Macro<WebDriver> transform) {
-        if(driver == null){
+        if (driver == null) {
             throw new NullPointerException("Provided Driver is null");
         }
         try {

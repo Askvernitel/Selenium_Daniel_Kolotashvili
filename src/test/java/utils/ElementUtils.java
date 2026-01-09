@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class ElementUtils {
     public static void run(WebElement element, Macro<WebElement> transform) {
-        if(element == null){
+        if (element == null) {
             throw new NullPointerException("Provided Web Element is null");
         }
         try {
@@ -21,15 +21,15 @@ public class ElementUtils {
         }
     }
 
-    public static void runScrollBefore(WebElement element, WebDriver driver, Macro<WebElement> transform){
-        if(element == null){
+    public static void runScrollBefore(WebElement element, WebDriver driver, Macro<WebElement> transform) {
+        if (element == null) {
             throw new NullPointerException("Provided Web Element is null");
         }
         try {
             Actions actions = new Actions(driver);
             int height = element.getSize().height;
-            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(false);", element);
-            actions.scrollByAmount( 0,3*height).perform();
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
+            actions.scrollByAmount(0, 3 * height).perform();
 
             transform.run(element);
         } catch (Exception e) {

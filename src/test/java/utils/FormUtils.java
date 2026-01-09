@@ -15,15 +15,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class FormUtils {
-    public static FieldsDTO getFields(List<WebElement> elements){
+    public static FieldsDTO getFields(List<WebElement> elements) {
         FieldsDTO result = new FieldsDTO();
-        elements.forEach((elem)->{
+        elements.forEach((elem) -> {
             String labelFor = elem.getAttribute("for");
-            if(labelFor != null && labelFor.contains("radio")) {
+            if (labelFor != null && labelFor.contains("radio")) {
                 result.getRadios().add(elem);
                 return;
             }
-            if(labelFor != null && labelFor.contains("checkbox")){
+            if (labelFor != null && labelFor.contains("checkbox")) {
                 result.getCheckboxes().add(elem);
                 return;
             }
@@ -57,79 +57,90 @@ public class FormUtils {
         });
         return result;
     }
-    public static void fillDatePickers(List<WebElement> elem, Date date){
+
+    public static void fillDatePickers(List<WebElement> elem, Date date) {
         elem.forEach((welem) -> fillDatePicker(welem, date));
     }
-    public static void fillDatePicker(WebElement elem, Date date){
+
+    public static void fillDatePicker(WebElement elem, Date date) {
         String strDate = new SimpleDateFormat("d MMM yyyy").format(date.getTime());
         elem.sendKeys(Keys.CONTROL + "a");
         elem.sendKeys(strDate);
         elem.sendKeys(Keys.ENTER);
     }
-    public static void fillSelectInputFields(List<WebElement> elem, String input){
+
+    public static void fillSelectInputFields(List<WebElement> elem, String input) {
         elem.forEach((welem) -> fillInputField(welem, input, true));
     }
+
     public static void fillInputFields(List<WebElement> elem, String input) {
         elem.forEach((welem) -> fillInputField(welem, input, false));
     }
-    public static void fillInputField(WebElement elem, String value, Boolean pressTab){
-        try{
+
+    public static void fillInputField(WebElement elem, String value, Boolean pressTab) {
+        try {
             elem.sendKeys(value);
-            if(pressTab){
+            if (pressTab) {
                 elem.sendKeys(Keys.TAB);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
 
-    public static void setInputCheckboxes(List<WebElement> elem, Boolean value){
-        elem.forEach((welem)->{ setInputCheckbox(welem, value);});
+    public static void setInputCheckboxes(List<WebElement> elem, Boolean value) {
+        elem.forEach((welem) -> {
+            setInputCheckbox(welem, value);
+        });
     }
-    public static void setInputCheckbox(WebElement elem, Boolean value){
-        try{
-            if(value && !elem.isSelected()){
+
+    public static void setInputCheckbox(WebElement elem, Boolean value) {
+        try {
+            if (value && !elem.isSelected()) {
                 elem.click();
-            }else if(!value && elem.isSelected()){
+            } else if (!value && elem.isSelected()) {
                 elem.click();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    public static void markInputRadiosByOption(List<WebElement> elem, String option){
-        elem.forEach((welem)->{
-            if(welem.getText().equals(option)){
+
+    public static void markInputRadiosByOption(List<WebElement> elem, String option) {
+        elem.forEach((welem) -> {
+            if (welem.getText().equals(option)) {
                 markInputRadio(welem);
             }
         });
     }
-    public static void markInputRadio(WebElement elem){
-        try{
+
+    public static void markInputRadio(WebElement elem) {
+        try {
             elem.click();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    public static WebElement getElementFromListById(List<WebElement> elems , String id){
-        if (id == null){
+
+    public static WebElement getElementFromListById(List<WebElement> elems, String id) {
+        if (id == null) {
             return null;
         }
-        return elems.stream().filter((elem)->{
+        return elems.stream().filter((elem) -> {
             return Objects.equals(elem.getAttribute("id"), id);
         }).findFirst().get();
     }
 
-    public static String findTableMatchByLabel(List<WebElement> elems, String label){
-        for(WebElement elem:elems){
+    public static String findTableMatchByLabel(List<WebElement> elems, String label) {
+        for (WebElement elem : elems) {
             List<WebElement> tds = elem.findElements(By.tagName("td"));
-            if(tds.isEmpty()){
+            if (tds.isEmpty()) {
                 continue;
             }
             WebElement td1 = tds.get(0);
             WebElement td2 = tds.get(1);
-            if(td1.getText().equals(label)){
+            if (td1.getText().equals(label)) {
                 return td2.getText();
             }
         }

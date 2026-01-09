@@ -11,8 +11,8 @@ import java.util.List;
 public class ElementUtils {
 
 
-    public static List<WebElement> findElements(BasePage page, By... locators){
-        return Arrays.stream(locators).flatMap((locator)->{
+    public static List<WebElement> findElements(BasePage page, By... locators) {
+        return Arrays.stream(locators).flatMap((locator) -> {
             List<WebElement> resultElementList = page.findElements(locator);
             return resultElementList.stream();
         }).toList();
@@ -24,7 +24,6 @@ public class ElementUtils {
             return resultElementList.stream();
         }).toList();
     }*/
-
 
 
 }

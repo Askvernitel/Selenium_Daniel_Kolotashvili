@@ -10,13 +10,13 @@ import org.testng.annotations.BeforeMethod;
 
 public class TestBase {
     @BeforeClass
-    public void setup(ITestContext testContext){
+    public void setup(ITestContext testContext) {
         Config.initConfig(testContext);
         DriverFactory.initDriverOf(Config.DEFAULT_BROWSER);
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         DriverFactory.quitDriver();
     }
 }
