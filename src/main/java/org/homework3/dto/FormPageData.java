@@ -3,24 +3,28 @@ package org.homework3.dto;
 import org.homework3.enums.GenderType;
 import org.homework3.enums.HobbyType;
 
+import java.util.Date;
+
 public class FormPageData {
     String firstName;
     String lastName;
     String email;
     GenderType genderType;
     String phoneNumber;
+    Date dateOfBirth;
     String subject;
     HobbyType hobby;
     String currentAddress;
     String state;
     String city;
 
-    public FormPageData(String firstName, String lastName, String email, GenderType genderType, String phoneNumber, String subject, HobbyType hobby, String currentAddress, String state, String city) {
+    public FormPageData(String firstName, String lastName, String email, GenderType genderType, String phoneNumber, Date dateOfBirth, String subject, HobbyType hobby, String currentAddress, String state, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.genderType = genderType;
         this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
         this.subject = subject;
         this.hobby = hobby;
         this.currentAddress = currentAddress;
@@ -46,6 +50,14 @@ public class FormPageData {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getSubject() {

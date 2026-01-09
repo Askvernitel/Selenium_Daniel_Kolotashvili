@@ -15,7 +15,7 @@ public class TestBase {
         DriverFactory.initDriverOf(Config.DEFAULT_BROWSER);
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() {
         DriverFactory.quitDriver();
     }

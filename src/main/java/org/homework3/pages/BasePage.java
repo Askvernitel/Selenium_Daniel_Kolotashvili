@@ -35,8 +35,9 @@ public abstract class BasePage {
     public List<WebElement> findElements(By locator) {
         return this.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
-
-
+    public WebElement findElement(By locator) {
+        return this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
     public void scrollTo(By locator, Integer factor) {
         WebElement element = driver.findElement(locator);
         Actions actions = new Actions(driver);

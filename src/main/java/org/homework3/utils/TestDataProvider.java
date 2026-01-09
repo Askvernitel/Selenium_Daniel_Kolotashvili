@@ -1,5 +1,6 @@
 package org.homework3.utils;
 
+import org.homework3.dto.AlertPageData;
 import org.homework3.dto.FormPageData;
 import org.homework3.enums.GenderType;
 import org.homework3.enums.HobbyType;
@@ -17,7 +18,13 @@ public class TestDataProvider {
 
     @DataProvider(name = "alertPageData")
     public Object[][] alertPageData() {
-        return FileUtils.getObjectArrayFrom(Config.ALERT_DATA_FILE_PATH);
+        Map<String, String> fileDataMap = FileUtils.getJsonMapFrom(Config.ALERT_DATA_FILE_PATH);
+        Object[][] alertData = {
+                new AlertPageData[]{
+                        new AlertPageData(fileDataMap.get("alertInput"))
+                }
+        };
+        return alertData;
     }
 
     @DataProvider(name = "formPageData")
@@ -30,6 +37,7 @@ public class TestDataProvider {
                         fileDataMap.get("email"),
                         GenderType.valueOf(fileDataMap.get("gender")),
                         fileDataMap.get("phoneNumber"),
+                        GeneralUtils.getDateFrom(fileDataMap.get("dateOfBirth")),
                         fileDataMap.get("subject"),
                         HobbyType.valueOf(fileDataMap.get("hobby")),
                         fileDataMap.get("currentAddress"),

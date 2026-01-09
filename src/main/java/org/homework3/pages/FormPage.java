@@ -5,6 +5,8 @@ import org.homework3.enums.HobbyType;
 import org.openqa.selenium.*;
 
 import java.lang.annotation.Documented;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class FormPage extends BasePage {
     private By currentAddressLocator = new By.ById("currentAddress");
     private By stateLocator = new By.ById("react-select-3-input");
     private By cityLocator = new By.ById("react-select-4-input");
-
+    private By dateOfBirthLocator = new By.ById("dateOfBirthInput");
 
     private By maleCheckboxLocator = new By.ByCssSelector("label[for='gender-radio-1']");
     private By femaleCheckboxLocator = new By.ByCssSelector("label[for='gender-radio-2']");
@@ -82,7 +84,11 @@ public class FormPage extends BasePage {
         return this;
     }
 
-    public FormPage setDateOfBirthField(String input) {
+    public FormPage setDateOfBirthField(Date input) {
+        String date = new SimpleDateFormat("d MMM yyyy").format(input.getTime());
+        type(dateOfBirthLocator, Keys.CONTROL + "a");
+        type(dateOfBirthLocator, date);
+        type(dateOfBirthLocator, Keys.ENTER);
         return this;
     }
 
@@ -130,14 +136,14 @@ public class FormPage extends BasePage {
 
 
     public FormPage scrollToSubmitButton() {
-        scrollTo(submitButtonLocator, 4);
+        scrollTo(submitButtonLocator, 5);
         return this;
     }
 
 
     public Map<String, String> getTableLabelMap() {
         Map<String, String> resultLabelMap = new HashMap<>();
-        WebElement table = driver.findElement(tableLocator);
+        WebElement table = findElement(tableLocator);
 
         List<WebElement> tableRows = table.findElements(tableRowLocator);
 
@@ -155,21 +161,5 @@ public class FormPage extends BasePage {
         }
         return resultLabelMap;
     }
-
-    public static String findTableMatchByLabel(List<WebElement> elems, String label) {
-        for (WebElement elem : elems) {
-            List<WebElement> tds = elem.findElements(By.tagName("td"));
-            if (tds.isEmpty()) {
-                continue;
-            }
-            WebElement td1 = tds.get(0);
-            WebElement td2 = tds.get(1);
-            if (td1.getText().equals(label)) {
-                return td2.getText();
-            }
-        }
-        return "";
-    }
-
 
 }

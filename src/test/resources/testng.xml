@@ -1,16 +1,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="FormSuite" parallel="classes">
+<suite name="FormSuite" parallel="tests">
     <parameter name="FORM_URL" value="https://demoqa.com/automation-practice-form"/>
     <parameter name="ALERT_URL" value="https://demo.automationtesting.in/Alerts.html"/>
     <parameter name="DEFAULT_BROWSER" value="firefox"/>
-    <parameter name="ALERT_DATA_FILE_PATH" value="test-data/alert-data.csv"/>
+    <parameter name="ALERT_DATA_FILE_PATH" value="test-data/alert-data.json"/>
     <parameter name="FORM_DATA_FILE_PATH" value="test-data/form-data.json"/>
 
     <test name="tests.FormTests">
         <classes>
-            <!--<class name="tests.FormTests"/>
-            <class name="tests.AlertTests"/>
-            <class name="tests.LoadTest"/>-->
+            <class name="tests.AlertTest"/>
             <class name="tests.FormTest"/>
         </classes>
     </test>

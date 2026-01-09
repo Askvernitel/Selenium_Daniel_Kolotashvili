@@ -17,6 +17,10 @@ public class ElementUtils {
             return resultElementList.stream();
         }).toList();
     }
+
+    public static WebElement findElementByText(List<WebElement> elements, String text){
+        return elements.stream().filter(element-> element.getText().startsWith(text)).findFirst().orElse(null);
+    }
     /*
     public static List<WebElement> findElement(BasePage page, By parent, By child){
         return Arrays.stream(locators).flatMap((locator)->{
