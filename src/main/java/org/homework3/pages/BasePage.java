@@ -1,5 +1,6 @@
 package org.homework3.pages;
 
+import org.homework3.utils.GeneralUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,6 +31,10 @@ public abstract class BasePage {
 
     public void type(By locator, Keys keys) {
         this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).sendKeys(keys);
+    }
+
+    public void screenshot(){
+        GeneralUtils.screenshot(driver);
     }
 
     public List<WebElement> findElements(By locator) {

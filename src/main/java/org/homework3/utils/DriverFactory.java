@@ -31,9 +31,7 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        System.out.println("Quiting Driver");
         if (driver == null) return;
-        System.out.println("Quiting Driver");
         driver.quit();
     }
 }

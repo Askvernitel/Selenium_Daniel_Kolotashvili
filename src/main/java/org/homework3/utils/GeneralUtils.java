@@ -1,5 +1,11 @@
 package org.homework3.utils;
 
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Listeners;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -28,5 +34,10 @@ public class GeneralUtils {
         DateTimeFormatter formatter =
                 DateTimeFormatter.ofPattern("dd MMMM,yyyy", Locale.ENGLISH);
         return localDate.format(formatter);
+    }
+
+    @Attachment(value="Screenshot", type="image/png")
+    public static byte[] screenshot(WebDriver driver){
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }
